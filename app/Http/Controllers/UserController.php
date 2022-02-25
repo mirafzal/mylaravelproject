@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index() {
-//        User::factory()->count(10)->create();
+        //User::factory()->count(10)->create();
         $users = User::all();
         return view('users', ['users' => $users]);
     }
