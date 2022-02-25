@@ -8,10 +8,8 @@
   <title>Document</title>
 </head>
 <body>
-<ul>
-@foreach($categories as $category)
-  <li>{{ $category->name }}</li>
-@endforeach
-</ul>
+<a href="{{ route('categories.index') }}">Back</a>
+{{ $category->id }}<br>
+{{ $category->name }}
 </body>
 </html>
