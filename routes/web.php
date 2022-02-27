@@ -20,12 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function () {
-//    $category = \App\Models\Category::query()->find(1);
-//    dd($category->products);
-    $product = \App\Models\Product::query()->findOrFail(2);
-    dd($product->category);
-});
+//Route::get('test', function () {
+////    $category = \App\Models\Category::query()->find(1);
+////    dd($category->products);
+//    $product = \App\Models\Product::query()->findOrFail(2);
+//    dd($product->category);
+//});
 
 Route::get('users', [UserController::class, 'index']);
 
@@ -40,4 +40,7 @@ Route::get('users', [UserController::class, 'index']);
 Route::resource('categories', CategoryController::class);
 
 
-Route::get('products', [ProductController::class, 'index']);
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
+Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('products',[ProductController::class, 'store'])->name('products.store');
+Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
