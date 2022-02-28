@@ -9,16 +9,17 @@
 </head>
 <body>
 
-<form action="{{ route('products.store') }}" method="post">
+<form action="{{ route('products.update', $product->id) }}" method="post">
     @csrf
+    @method('put')
     <label for="name">Product name</label>
-    <input type="text" name="name"><br>
+    <input type="text" name="name" value="{{ $product->name }}"><br>
     <label for="name">Product category</label>
-    <input type="text" name="category_id"><br>
+    <input type="text" name="category_id" value="{{ $product->category_id }}"><br>
     <label for="name">Product price</label>
-    <input type="text" name="price"><br>
+    <input type="text" name="price" value="{{ $product->price }}"><br>
 
-    <button type="submit">Create product</button>
+    <button type="submit">Update product</button>
 </form>
 <a href="{{ route('products.index') }}">Back</a>
 </body>

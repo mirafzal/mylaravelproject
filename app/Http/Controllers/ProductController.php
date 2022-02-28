@@ -22,14 +22,37 @@ class ProductController extends Controller
     public function store() {
         Product::query()->create([
             'name' => \request()->get('name'),
-            'category_id' => \request()->get('category_id'),
-            'age' => \request()->get('age')
+            'price' => \request()->get('price'),
+            'category_id' => \request()->get('category_id')
         ]);
 
         return redirect()->route('products.index');
     }
-    public function show(Request $product) {
-        //$product = Product::query()->find($id);
+
+    public function show($product) {
+        $product = Product::query()->find($product);
         return view('products.show', compact('product'));
     }
+
+    public function edit($product) {
+        $product = Product::query()->find($product);
+        return view('products.edit', compact('product'));
+    }
+    public function update($product){
+        $product = Product::query()->find($product);
+        $product->update([
+            'name' => \request()->get('name'),
+            'price' => \request()->get('price'),
+            'category_id' => \request()->get('category_id')
+        ]);
+        return redirect()->route('products.index');
+    }
+
+    public function destroy($product){
+        $product = Product::query()->find($product);
+        $product->delete();
+
+        return redirect()->route('products.index');
+    }
+
 }

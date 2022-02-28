@@ -8,11 +8,11 @@
     <title>Product show</title>
 </head>
 <body>
-<a href="{{ route('products.index') }}">Back</a>
+<a href="{{ route('products.index') }}">Back</a><br>
 
+<p>{{ $product->id }}</p>
 <p>{{ $product->name }}</p>
-<p>{{ $product->category_id }}</p>
 <p>{{ $product->price }}</p>
-
+<p>{{ $product->category_id }}</p>
 </body>
 </html>

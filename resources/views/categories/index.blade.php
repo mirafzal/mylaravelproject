@@ -33,5 +33,6 @@
       </tr>
   @endforeach
 </table>
+<h4><a href="{{ route('products.index') }}">Products</a></h4>
 </body>
 </html>
