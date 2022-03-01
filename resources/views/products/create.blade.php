@@ -14,7 +14,11 @@
     <label for="name">Product name</label>
     <input type="text" name="name"><br>
     <label for="name">Product category</label>
-    <input type="text" name="category_id"><br>
+    <select type="text" name="category_id">
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select><br>
     <label for="name">Product price</label>
     <input type="text" name="price"><br>
 
