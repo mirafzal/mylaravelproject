@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::get('users', [UserController::class, 'index']);
 
-//Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('categories', [CategoryController::class, 'index'])->name('main');
 //Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
 //Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
 //Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
@@ -49,3 +49,7 @@ Route::resource('categories', CategoryController::class);
 //Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy);
 
 Route::resource('products', ProductController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

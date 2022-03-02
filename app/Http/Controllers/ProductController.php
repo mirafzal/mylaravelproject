@@ -22,7 +22,15 @@ class ProductController extends Controller
         return view('products.create', compact('categories'));
     }
 
-    public function store() {
+    public function store(Request $request) {
+        \Log::info('product created');
+        $request->validate([
+            'name' => 'required|string|min:10|max:255',
+            'name' => ['required','string','min:10','max:255'],
+            'price' => 'required|integer',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
         Product::query()->create([
             'name' => \request()->get('name'),
             'price' => \request()->get('price'),

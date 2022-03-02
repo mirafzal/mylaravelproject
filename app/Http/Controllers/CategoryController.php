@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -19,14 +20,9 @@ class CategoryController extends Controller
         return view('categories.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-//        $category = new Category();
-//        $category->name = $request->get('name');
-//        $category->save();
-        Category::query()->create([
-            'name' => $request->get('name')
-        ]);
+        Category::query()->create($request->validated());
 
         return redirect()->route('categories.index');
     }

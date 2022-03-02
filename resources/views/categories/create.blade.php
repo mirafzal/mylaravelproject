@@ -8,6 +8,11 @@
   <title>Document</title>
 </head>
 <body>
+<ul>
+@foreach($errors as $error)
+    <li>{{ $error }}</li>
+@endforeach
+</ul>
 <form action="{{ route('categories.store') }}" method="post">
   @csrf
   <input type="text" name="name">
