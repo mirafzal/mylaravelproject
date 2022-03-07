@@ -16,15 +16,19 @@
 <form action="{{ route('products.store') }}" method="post">
     @csrf
     <label for="name">Product name</label>
-    <input type="text" name="name"><br>
+    <input type="text" name="name" value="{{ old('name') }}"><br>
     <label for="name">Product category</label>
     <select type="text" name="category_id">
         @foreach($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            <option
+              @if(old('category_id') == $category->id) selected @endif
+                value="{{ $category->id }}"
+            >
+                {{ $category->name }}</option>
         @endforeach
     </select><br>
     <label for="name">Product price</label>
-    <input type="text" name="price"><br>
+    <input type="text" name="price" value="{{ old('price') }}"><br>
 
     <button type="submit">Create product</button>
 </form>

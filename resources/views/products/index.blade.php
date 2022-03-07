@@ -13,7 +13,7 @@
     <tr>
         <th>ID</th>
         <th>Product name</th>
-        <th>Product category ID</th>
+        <th>Product category</th>
         <th>Product price</th>
         <th></th>
         <th></th>
@@ -24,9 +24,7 @@
     <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
-            <td>
-                 {{ $product->category_id }}
-            </td>
+            <td>{{ $product->category->name }}</td>
             <td>{{ $product->price }}</td>
             <td><a href="{{ route('products.show', $product->id) }}">Show</a></td>
             <td><a href="{{ route('products.edit', $product->id) }}">Edit</a></td>

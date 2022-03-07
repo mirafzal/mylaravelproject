@@ -13,6 +13,6 @@
 <p>{{ $product->id }}</p>
 <p>{{ $product->name }}</p>
 <p>{{ $product->price }}</p>
-<p>{{ $product->category_id }}</p>
+<p>{{ $product->category->name }}</p>
 </body>
 </html>

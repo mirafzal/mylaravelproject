@@ -15,6 +15,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <div class="row"><a href="{{ route('categories.index') }}">Categories</a></div>
+                    <div class="row"><a href="{{ route('products.index') }}">Products</a></div>
                 </div>
             </div>
         </div>

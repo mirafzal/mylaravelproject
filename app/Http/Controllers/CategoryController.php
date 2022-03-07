@@ -12,7 +12,6 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        // Category::factory()->count(10)->create();
         $categories = Category::all();
         return view('categories.index', compact('categories'));
     }
@@ -25,7 +24,6 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         Category::query()->create($request->validated());
-
         return redirect()->route('categories.index');
     }
 
@@ -41,22 +39,13 @@ class CategoryController extends Controller
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-//        $category->name = $request->get('name');
-//        $category->save();
-
-//        $category->update([
-//            'name' => $request->validated(),
-//        ]);
-
         $category->update($request->validated());
-
         return redirect()->route('categories.index');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-
         return redirect()->route('categories.index');
     }
 }

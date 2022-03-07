@@ -17,9 +17,17 @@
     @csrf
     @method('put')
     <label for="name">Product name</label>
-    <input type="text" name="name" value="{{ $product->name }}"><br>
+    <input type="text" name="name" value="{{ old('name') ?? $product->name }}"><br>
     <label for="name">Product category</label>
-    <input type="text" name="category_id" value="{{ $product->category_id }}"><br>
+    <select type="text" name="category_id">
+        @foreach($categories as $category)
+            <option
+              @if(old('category_id') == $category->id || (!old('category_id') && $product->category->id == $category->id)) selected @endif
+            value="{{ $category->id }}"
+            >
+                {{ $category->name }}</option>
+        @endforeach
+    </select><br>
     <label for="name">Product price</label>
     <input type="text" name="price" value="{{ $product->price }}"><br>
 
