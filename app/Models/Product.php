@@ -18,4 +18,11 @@ class Product extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
+//
+//    public function getActiveProducts() {
+//        return $this->newQuery()->whereHas('category', function ($query) {
+//           $query->where('is_active', '=', 1);
+//        })->get();
+//    }
+
 }
