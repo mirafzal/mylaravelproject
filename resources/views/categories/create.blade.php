@@ -9,7 +9,7 @@
 </head>
 <body>
 <ul>
-@foreach($errors as $error)
+@foreach($errors->all() as $error)
     <li>{{ $error }}</li>
 @endforeach
 </ul>

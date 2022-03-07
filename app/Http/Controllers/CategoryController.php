@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -37,13 +39,16 @@ class CategoryController extends Controller
         return view('categories.edit', compact('category'));
     }
 
-    public function update(Request $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
 //        $category->name = $request->get('name');
 //        $category->save();
-        $category->update([
-            'name' => $request->get('name')
-        ]);
+
+//        $category->update([
+//            'name' => $request->validated(),
+//        ]);
+
+        $category->update($request->validated());
 
         return redirect()->route('categories.index');
     }

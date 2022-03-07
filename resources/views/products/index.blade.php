@@ -24,7 +24,9 @@
     <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->category_id }}</td>
+            <td>
+                 {{ $product->category_id }}
+            </td>
             <td>{{ $product->price }}</td>
             <td><a href="{{ route('products.show', $product->id) }}">Show</a></td>
             <td><a href="{{ route('products.edit', $product->id) }}">Edit</a></td>

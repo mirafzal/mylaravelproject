@@ -8,6 +8,11 @@
   <title>Document</title>
 </head>
 <body>
+<ul>
+    @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+</ul>
 <form action="{{ route('categories.update', $category->id) }}" method="post">
   @csrf
   @method('put')

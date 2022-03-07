@@ -8,7 +8,11 @@
     <title>Products create</title>
 </head>
 <body>
-
+<ul>
+    @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+</ul>
 <form action="{{ route('products.update', $product->id) }}" method="post">
     @csrf
     @method('put')

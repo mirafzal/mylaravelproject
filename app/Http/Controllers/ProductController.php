@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -13,6 +15,13 @@ class ProductController extends Controller
 //        redirect()->route('categories.index');
          //Product::factory()->count(10)->create();
         $products = Product::all();
+        //$categories = Category::query()->get('name');
+       // dd($categories);
+//       foreach ($categories as $category){
+//
+//           $category = $category->name;
+//           return $category;
+//       }
         return view('products.index', compact('products'));
     }
 
@@ -22,14 +31,9 @@ class ProductController extends Controller
         return view('products.create', compact('categories'));
     }
 
-    public function store(Request $request) {
-        \Log::info('product created');
-        $request->validate([
-            'name' => 'required|string|min:10|max:255',
-            'name' => ['required','string','min:10','max:255'],
-            'price' => 'required|integer',
-            'category_id' => 'required|exists:categories,id',
-        ]);
+    public function store(StoreProductRequest $request) {
+        //\Log::info('product created');
+        Product::query()->create($request->validated());
 
         Product::query()->create([
             'name' => \request()->get('name'),
@@ -49,13 +53,17 @@ class ProductController extends Controller
        // $product = Product::query()->find($product);
         return view('products.edit', compact('product'));
     }
-    public function update(Product $product){
+    public function update(UpdateProductRequest $request, Product $product){
        // $product = Product::query()->find($product);
-        $product->update([
-            'name' => \request()->get('name'),
-            'price' => \request()->get('price'),
-            'category_id' => \request()->get('category_id')
-        ]);
+
+//        $product->update([
+//            'name' => \request()->get('name'),
+//            'price' => \request()->get('price'),
+//            'category_id' => \request()->get('category_id')
+//        ]);
+
+        $product->update($request->validated());
+
         return redirect()->route('products.index');
     }
 
